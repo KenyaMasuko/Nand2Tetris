@@ -14,5 +14,12 @@ CHIP DMux8Way {
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    //// Replace this comment with your code.
+    // Put your code here:
+    // 3-bit demux
+    DMux(in=in, sel=sel[2], a=dMuxOut0, b=dMuxOut1);
+    DMux4Way(in=dMuxOut0, sel=sel[0..1], a=a, b=b, c=c, d=d);
+    DMux4Way(in=dMuxOut1, sel=sel[0..1], a=e, b=f, c=g, d=h);
+
+    // 2-bit demuxを使用しない例
+    // 実装できなかったので後でやる
 }
