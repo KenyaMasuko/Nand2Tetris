@@ -11,12 +11,16 @@
  * else               out(t+1) = out(t)
  *
  * To select a mode, assert the relevant control bit,
- * and de-assert the other two bits. 
+ * and de-assert the other two bits.
  */
 CHIP PC {
     IN in[16],inc, load, reset;
     OUT out[16];
-    
+
     PARTS:
-    //// Replace this comment with your code.
+    Mux16(a=w4, b=w5, sel=inc, out=w1);
+    Mux16(a=w1, b=in, sel=load, out=w2);
+    Mux16(a=w2, b=false, sel=reset, out=w3);
+    Register(in=w3, load=true, out=w4, out=out);
+    Inc16(in=w4, out=w5);
 }
