@@ -32,7 +32,6 @@ CHIP CPU {
         pc[15];          // Address of next instruction
 
     PARTS:
-    // Replace this comment with your code.
     And(a=instruction[3], b=instruction[15], out=writeM);
     And(a=instruction[4], b=instruction[15], out=loadD);
 
